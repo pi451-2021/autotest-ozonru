@@ -1,6 +1,5 @@
 package ru.ozon;
 
-
 import io.qameta.allure.*;
 import org.junit.After;
 import org.junit.Before;
@@ -21,15 +20,14 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.fail;
 
 
-public class AutoTests {
-    Properties props = new Properties();
-    public ChromeDriver driver = new ChromeDriver();
+public class OzonAutoTests {
+    private Properties props = new Properties();
+    private ChromeDriver driver = new ChromeDriver();
     private final int minPrice = 10000;
     private final int maxPrice = 11000;
 
     @Before
-    public void Setup()
-    {
+    public void Setup() {
         try {
             props = new Properties();
             driver = new ChromeDriver();
@@ -42,16 +40,14 @@ public class AutoTests {
     }
 
     @After
-    public void Close()
-    {
+    public void Close() {
         props.clear();
         driver.quit();
     }
 
     @Test
     @Description("First test")
-    public void Test1()
-    {
+    public void Test1() {
         MainPage();
         Catalog();
         Appliances();
@@ -65,8 +61,7 @@ public class AutoTests {
 
     @Test
     @Description("Second test")
-    public void Test2()
-    {
+    public void Test2() {
         MainPage();
         Catalog();
         Appliances();
@@ -82,8 +77,7 @@ public class AutoTests {
 
     @Test
     @Description("Third test")
-    public void Test3()
-    {
+    public void Test3() {
         MainPage();
         Catalog();
         Appliances();
@@ -450,6 +444,5 @@ public class AutoTests {
                 sb.append(str.charAt(i));
         return Integer.parseInt(sb.toString());
     }
-    // *********************************************************************** //
-
 }
+// *********************************************************************** //
