@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
-/** Задание 1 **/
+
 public class AutoTests {
     Properties props = new Properties();
     public ChromeDriver driver = new ChromeDriver();
@@ -96,7 +96,7 @@ public class AutoTests {
 
     /* Открытие главной страницы */
     @Step("Go to the main page of Ozon.ru")
-    public void MainPage() {
+    private void MainPage() {
         try {
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
@@ -113,7 +113,7 @@ public class AutoTests {
 
     /* Открытие каталога */
     @Step("Go to Catalog.")
-    public void Catalog() {
+    private void Catalog() {
         try {
             clickXpath(props.getProperty("xpCatalog"));
             timeOut();
@@ -126,7 +126,7 @@ public class AutoTests {
 
     /* Раздел Бытовая техника */
     @Step("Go to Appliances.")
-    public void Appliances() {
+    private void Appliances() {
         try {
             clickXpath(props.getProperty("xpAppliances"));
             timeOut();
@@ -138,7 +138,7 @@ public class AutoTests {
 
     /* Раздел Техника для кухни */
     @Step("Go to Kitchen Appliances.")
-    public void KitchenAppliances() {
+    private void KitchenAppliances() {
         try {
             clickXpath(props.getProperty("xpKitchApl"));
             timeOut();
@@ -151,7 +151,7 @@ public class AutoTests {
 
     /* Раздел Кофеварки и кофемашины */
     @Step("Go to Coffee Makers and coffee machines.")
-    public void CoffeeMaker() {
+    private void CoffeeMaker() {
         try {
             clickXpath(props.getProperty("xpCoffeeMaker"));
             timeOut();
@@ -163,7 +163,7 @@ public class AutoTests {
 
     /* Выбор типа кофеварки - рожковая */
     @Step("Select carob coffee maker.")
-    public void CarobCoffeeMaker() {
+    private void CarobCoffeeMaker() {
         try {
             clickXpath(props.getProperty("xpCarobCoffee"));
             timeOut();
@@ -175,7 +175,7 @@ public class AutoTests {
 
     /* Выбор метода приготовления - подогрев чашек */
     @Step("Select heated cups.")
-    public void HeatedCups() {
+    private void HeatedCups() {
         try {
             clickXpath(props.getProperty("xpHeatedCups"));
             timeOut();
@@ -189,7 +189,7 @@ public class AutoTests {
     /* Определение диапазона цен */
     @Step("Select Price Range from 10000 to 11000 rubles. " +
             "Check for the prices of goods are correct.")
-    public void PriceRange() {
+    private void PriceRange() {
         try {
             String minStr = Integer.toString(minPrice);
             String maxStr = Integer.toString(maxPrice);
@@ -246,7 +246,7 @@ public class AutoTests {
 
     /* Сортировка цены по возрастанию */
     @Step("Select sort in ascending order of price.")
-    public void SortAsc() {
+    private void SortAsc() {
         try {
             // Открытие выпадающего списка
             clickXpath(props.getProperty("xpDropDownList"));
@@ -256,7 +256,7 @@ public class AutoTests {
             driver.getKeyboard().pressKey(Keys.ENTER);
             timeOut();
             createScreenshot("OzonSortAsc");
-            timeOutMax();
+            timeOut();
         } catch (Exception ex) {
             fail("Error: " + ex.getMessage());
         }
@@ -264,7 +264,7 @@ public class AutoTests {
 
     /* Добавление в корзину */
     @Step("Add first good to the Basket.")
-    public void AddToBasket() {
+    private void AddToBasket() {
         try {
             clickXpath(props.getProperty("xpAddBasket"));
             timeOut();
@@ -277,7 +277,7 @@ public class AutoTests {
     /* Переход в корзину */
     @Step("Go to the Basket. Increase the amount of goods to 3. " +
             "Check that increase price is correct.")
-    public void Basket() {
+    private void Basket() {
         try {
             clickXpath(props.getProperty("xpBasket"));
             timeOut();
@@ -307,13 +307,13 @@ public class AutoTests {
     /* Добавление товара в избранное */
     @Step("Add good with a minimal price to favorites. Check that a " +
             "good was been added to favorites and price is correct.")
-    public void Favorites() {
+    private void Favorites() {
         try {
             timeOut();
             clickXpath(props.getProperty("xpAddFavorites"));
             timeOut();
             createScreenshot("AddToFavorites");
-            timeOutMax();
+            timeOut();
             // Сохранение цены и имени товара
             int[] pricesBefore = getChosenProductPricesListOnPage();
             timeOut();
@@ -324,7 +324,7 @@ public class AutoTests {
             clickXpath(props.getProperty("xpFavorites"));
             timeOut();
             createScreenshot("Favorites");
-            timeOutMax();
+            timeOut();
             int[] pricesAfter = getChosenProductPricesListOnPage();
             // Проверка наличия и цены товара в избранном
             String element = driver.findElementByLinkText(productName).getText();
@@ -351,7 +351,7 @@ public class AutoTests {
         else return buildInt(pricesStr.get(0));
     }
 
-    public void checkEveryProductOnPage() {
+    private void checkEveryProductOnPage() {
         StringBuilder sb = new StringBuilder();
         List<WebElement> priceElements =
                 findElementsByClassWait(20, "b5v4");
@@ -368,7 +368,7 @@ public class AutoTests {
                     + sb.toString());
     }
 
-    public int[] getChosenProductPricesListOnPage() {
+    private int[] getChosenProductPricesListOnPage() {
         WebElement priceElements = findElementByClassWait(30,"b5v4");
         //парсинг цены
         //в массив могут попасть 2 цены в итемах со скидкой (цена со скидкой и цена  до скидки)
@@ -380,21 +380,20 @@ public class AutoTests {
         return res;
     }
 
-
-    public void createScreenshot(String name)
+    private void createScreenshot(String name)
     {
         Allure.addAttachment(name,
                 new ByteArrayInputStream(((TakesScreenshot) driver)
                         .getScreenshotAs(OutputType.BYTES)));
     }
 
-    public void clickXpath(String path)
+    private void clickXpath(String path)
     {
         (new WebDriverWait(driver, 20))
                 .until(ExpectedConditions
                         .presenceOfElementLocated(By.xpath(path))).click();
     }
-    public void doubleClickXpath(String path)
+    private void doubleClickXpath(String path)
     {
         Actions actions = new Actions(driver);
         WebElement element =
@@ -404,28 +403,28 @@ public class AutoTests {
         actions.doubleClick(element).perform();
     }
 
-    public WebElement findElementByXpathWait(int timeout, String xpath)
+    private WebElement findElementByXpathWait(int timeout, String xpath)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         return wait.until(ExpectedConditions
                 .presenceOfElementLocated(By.xpath(xpath)));
     }
 
-    public WebElement findElementByClassWait(int timeout, String name)
+    private WebElement findElementByClassWait(int timeout, String name)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         return wait.until(ExpectedConditions
                 .presenceOfElementLocated(By.className(name)));
     }
 
-    public List<WebElement> findElementsByClassWait(int timeout, String name)
+    private List<WebElement> findElementsByClassWait(int timeout, String name)
     {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         return wait.until(ExpectedConditions
                 .presenceOfAllElementsLocatedBy(By.className(name)));
     }
 
-    public void timeOut()
+    private void timeOut()
     {
         try {
             Thread.sleep(1500);
@@ -434,16 +433,7 @@ public class AutoTests {
         }
     }
 
-    public void timeOutMax()
-    {
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public boolean isNumeric(String str) {
+    private boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
             return true;
@@ -452,7 +442,7 @@ public class AutoTests {
         }
     }
 
-    public int buildInt(String str)
+    private int buildInt(String str)
     {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < str.length(); i++)
