@@ -119,7 +119,7 @@ ____
 <!--##### Graphs -->
 <!--1. Status -->
  
-<!--![Alt text](allure_screenshots/Ower/01_allure_report.png?raw=true "Allure Status") -->
+<!--![Alt text](allure_screenshots/Ower/03_allure_status.png?raw=true "Allure Status") -->
 
 <!--2. Severity -->
 
