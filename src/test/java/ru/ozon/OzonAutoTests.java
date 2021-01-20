@@ -3,7 +3,9 @@ package ru.ozon;
 import io.qameta.allure.*;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -19,10 +21,10 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.fail;
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OzonAutoTests {
-    private Properties props = new Properties();
-    private ChromeDriver driver = new ChromeDriver();
+    private Properties props;
+    private ChromeDriver driver;
     private final int minPrice = 10000;
     private final int maxPrice = 11000;
 
