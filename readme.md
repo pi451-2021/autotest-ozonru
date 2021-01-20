@@ -106,11 +106,11 @@ On the command line:
 ____
 
 
-<!--### Allure Report -->
+### Allure Report
 
-<!--#### Report -->
+#### Report
 
-<!--![Alt text](allure_screenshots/Ower/01_allure_report.png?raw=true "Allure Report") -->
+![Alt text](allure_screenshots/Other/01_allure_report.png?raw=true "Allure Report")
 
 <!--#### Suites
 
