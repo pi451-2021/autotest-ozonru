@@ -98,7 +98,7 @@ ____
 
 On the command line:
 
-1. the path to the driver is specified in config.ini
+1. `the path to the driver is specified in config.ini`
 2. `mvn clean test`
 3. `allure serve`
 4. `allure-results`
