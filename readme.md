@@ -76,6 +76,9 @@ ____
 Увеличить количество кофеварок до 3 и проверить, что сумма увеличилась в 3 раза. 
 Если нужного количества кофеварок нет в наличии — тест просто должен падать.
 
+*Error for FirstTest*
+
+![Alt text](allure_screenshots/FirstTest/Error_FirstTest.png?raw=true "Error for FirstTest")
 
 ____
 
@@ -83,14 +86,18 @@ ____
 Сделать тест, аналогичный п.1, только добавить условие «Тип кофеварки = Рожковая» и «Приготовление напитка = Подогрев чашек».
 Для этого, воспользоваться фильтром на сайте, в левой колонке.
 
+*Result for SecondTest*
 
+![Alt text](allure_screenshots/SecondTest/Pass_SecondTest.png?raw=true "Result for SecondTest")
 
 ____
 
 ### Task 2.3
 По сценарию, аналогичному п.1, выбрать самую дешевую кофеварку и добавить ее в «Избранное». Написать тест, который открывает раздел «Избранное» и проверяет, что кофеварка присутствует в нем и ее цена и скидка не изменились.
 
+*Error for ThirdTest*
 
+![Alt text](allure_screenshots/ThirdTest/Error_ThirdTest.png?raw=true "Result for ThirdTest")
 
 ____
 
@@ -112,26 +119,26 @@ ____
 
 ![Alt text](allure_screenshots/Other/01_allure_report.png?raw=true "Allure Report")
 
-<!--#### Suites
+#### Suites
 
-<!--![Alt text](allure_screenshots/Ower/02_allure_suites.png?raw=true "Allure Suites") -->
+![Alt text](allure_screenshots/Other/02_allure_suites.png?raw=true "Allure Suites")
 
-<!--##### Graphs -->
-<!--1. Status -->
+##### Graphs
+1. Status
  
-<!--![Alt text](allure_screenshots/Ower/03_allure_status.png?raw=true "Allure Status") -->
+![Alt text](allure_screenshots/Other/03_allure_status.png?raw=true "Allure Status")
 
-<!--2. Severity -->
+2. Severity
 
-<!--![Alt text](allure_screenshots/Ower/04_allure_severity.png?raw=true "Allure Severity") -->
+![Alt text](allure_screenshots/Other/04_allure_severity.png?raw=true "Allure Severity")
 
-<!--3. Duration -->
+3. Duration
 
-<!--![Alt text](allure_screenshots/Ower/05_allure_duration.png?raw=true "Allure Duration") -->
+![Alt text](allure_screenshots/Other/05_allure_duration.png?raw=true "Allure Duration")
 
-<!--#### Timeline -->
+#### Timeline
 
-<!--![Alt text](allure_screenshots/Ower/06_allure_timeline.png?raw=true "Allure Timeline") -->
+![Alt text](allure_screenshots/Other/06_allure_timeline.png?raw=true "Allure Timeline")
 
 ____
 
