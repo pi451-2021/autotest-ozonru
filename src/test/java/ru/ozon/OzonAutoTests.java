@@ -447,4 +447,3 @@ public class OzonAutoTests {
         return Integer.parseInt(sb.toString());
     }
 }
-// *********************************************************************** //
